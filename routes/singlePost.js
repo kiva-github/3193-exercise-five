@@ -10,21 +10,19 @@ router.use((req, res, next) => {
     next();
 })
 
-router.get("/", (req, res) => {
-    const postsQuery = firestore.getDocs(firestore.collection(db, "posts"));
-    const postsArray = []
+router.get("/:id", (req, res) => {
+    const postId = req.params.id;
+    const postQuery = firestore.getDoc(firestore.doc(db, "posts", postId));
 
-    postsQuery.then((response) => {
-        response.forEach((post) => {
-            // postsArray.push(doc.data());
-            console.log(post.data())
-        })
+    postQuery.then((response) => {
+        const post = response.data();
+        if (!post) res.send({})
+        res.send(post);
     })
     .catch((error) => {
         console.log(error);
         return res.send(error);
     })
-    res.send(postsArray);
 })
 
 module.exports = router

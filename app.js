@@ -1,9 +1,10 @@
 // imports/requires
 const express = require("express");
 const firebase = require("firebase/app");
+const firestore = require("firebase/firestore");
 
-const app = express()
-const port = process.env.PORT || 4000
+const app = express();
+const port = process.env.PORT || 4000;
 
 // Firebase Config
 const firebaseConfig = {
@@ -18,11 +19,12 @@ const firebaseConfig = {
 // Initialize Firebase App
 firebase.initializeApp(firebaseConfig);
 
-
-const indexRoute = require("./routes/index")
-
-app.use("/", indexRoute)
+// routes
+const indexRoute = require('./routes/index');
+const singlePostRoute = require('./routes/singlePost');
+app.use("/", indexRoute);
+app.use("/post", singlePostRoute);
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    console.log(`Example app listening on port ${port}`);
 })
