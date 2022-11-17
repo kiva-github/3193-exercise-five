@@ -8,12 +8,12 @@ const port = process.env.PORT || 4000;
 
 // Firebase Config
 const firebaseConfig = {
-  apiKey: "AIzaSyAz97WhUMlieMkG7Gb1I1ppNgNXZ8jywXg",
-  authDomain: "exercise-4-f22.firebaseapp.com",
-  projectId: "exercise-4-f22",
-  storageBucket: "exercise-4-f22.appspot.com",
-  messagingSenderId: "977346725076",
-  appId: "1:977346725076:web:111e83b859fbbcd564a741"
+  apiKey: "AIzaSyCYUi44ZsMprfdTeeAvE8U6qKtai5n1rBI",
+  authDomain: "exercise-5-f22.firebaseapp.com",
+  projectId: "exercise-5-f22",
+  storageBucket: "exercise-5-f22.appspot.com",
+  messagingSenderId: "540651686742",
+  appId: "1:540651686742:web:2e50c661a30f10156fa4f7"
 };
 
 // Initialize Firebase App
@@ -23,6 +23,7 @@ firebase.initializeApp(firebaseConfig);
 const indexRoute = require('./routes/index');
 const singlePostRoute = require('./routes/singlePost');
 const createPostRoute = require('./routes/createPost');
+
 app.use("/", indexRoute);
 app.use("/post", singlePostRoute);
 app.use("/create", createPostRoute);
